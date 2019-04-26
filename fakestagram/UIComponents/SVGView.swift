@@ -45,6 +45,6 @@ class SVGView: UIView, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         //Hard coded offset value to center svg
-        webView.evaluateJavaScript("window.scrollto(385,0)", completionHandler: nil)
+        webView.evaluateJavaScript("window.scrollto(380,0)", completionHandler: nil)
     }
 }
