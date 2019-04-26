@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D3B952C2273919900B91FFB /* AccountClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B952B2273919900B91FFB /* AccountClient.swift */; };
+		7D3B9530227398A500B91FFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B952F227398A500B91FFB /* ProfileViewController.swift */; };
+		7DEEE3D222624C5000E4FA25 /* TimelineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEEE3D122624C5000E4FA25 /* TimelineClient.swift */; };
 		E04FB2DC2249F2AB00B81C8A /* CodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04FB2DB2249F2AB00B81C8A /* CodableStore.swift */; };
 		E04FB2DE2249F2D300B81C8A /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04FB2DD2249F2D300B81C8A /* StorageType.swift */; };
 		E04FB2E02249F42A00B81C8A /* ItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04FB2DF2249F42A00B81C8A /* ItemStorage.swift */; };
@@ -50,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D3B952B2273919900B91FFB /* AccountClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountClient.swift; sourceTree = "<group>"; };
+		7D3B952F227398A500B91FFB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7DEEE3D122624C5000E4FA25 /* TimelineClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineClient.swift; sourceTree = "<group>"; };
 		E04FB2DB2249F2AB00B81C8A /* CodableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStore.swift; sourceTree = "<group>"; };
 		E04FB2DD2249F2D300B81C8A /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
 		E04FB2DF2249F42A00B81C8A /* ItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorage.swift; sourceTree = "<group>"; };
@@ -104,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D3B952E2273989400B91FFB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7D3B952F227398A500B91FFB /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		E04FB2D72249F1E600B81C8A /* Storages */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +153,7 @@
 				E0BB974C223F45EA00D028A1 /* Account.swift */,
 				E04FB2E12249F52900B81C8A /* AccountStorage.swift */,
 				E0BB9756223F6A3500D028A1 /* AccountRepo.swift */,
+				7D3B952B2273919900B91FFB /* AccountClient.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -164,6 +179,7 @@
 		E0DDF9EF223DF640009EB136 /* fakestagram */ = {
 			isa = PBXGroup;
 			children = (
+				7D3B952E2273989400B91FFB /* Profile */,
 				E0BB974B223F45DE00D028A1 /* Account */,
 				E0DDFA16223DFCB6009EB136 /* Post */,
 				E0DDFA2C223E0EDB009EB136 /* Timeline */,
@@ -220,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				E0DDFA2D223E0EF2009EB136 /* TimelineViewController.swift */,
+				7DEEE3D122624C5000E4FA25 /* TimelineClient.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -340,6 +357,7 @@
 				E04FB2E22249F52900B81C8A /* AccountStorage.swift in Sources */,
 				E04FB2DC2249F2AB00B81C8A /* CodableStore.swift in Sources */,
 				E0BCD23B22489E2300B4E0F6 /* HttpResponse.swift in Sources */,
+				7D3B9530227398A500B91FFB /* ProfileViewController.swift in Sources */,
 				E0DDFA31223E181C009EB136 /* PostDetailViewController.swift in Sources */,
 				E0BB974D223F45EA00D028A1 /* Account.swift in Sources */,
 				E0BCD23D2248A14300B4E0F6 /* RestClient.swift in Sources */,
@@ -348,9 +366,11 @@
 				E0DDFA2E223E0EF2009EB136 /* TimelineViewController.swift in Sources */,
 				E0BB9755223F5EDA00D028A1 /* Name.swift in Sources */,
 				E0DDF9F1223DF640009EB136 /* AppDelegate.swift in Sources */,
+				7D3B952C2273919900B91FFB /* AccountClient.swift in Sources */,
 				E0BB9748223F444B00D028A1 /* Client.swift in Sources */,
 				E0DDFA27223E029A009EB136 /* PostAuthorView.swift in Sources */,
 				E0BB9751223F57C400D028A1 /* Date+timestamp.swift in Sources */,
+				7DEEE3D222624C5000E4FA25 /* TimelineClient.swift in Sources */,
 				E0BB974A223F449700D028A1 /* Secrets.swift in Sources */,
 				E0BB9757223F6A3500D028A1 /* AccountRepo.swift in Sources */,
 			);
