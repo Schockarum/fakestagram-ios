@@ -12,7 +12,7 @@ class TimelineViewController: UIViewController {
     @IBOutlet weak var postsCollectionView: UICollectionView!
     
     let client = TimelineClient()
-    var post: [Post] = [] {
+    var posts: [Post] = [] {
         didSet { postsCollectionView.reloadData() }
     }
     
@@ -20,7 +20,7 @@ class TimelineViewController: UIViewController {
         super.viewDidLoad()
         configCollectionView()
         client.show { [weak self] data in
-            self?.post = data
+            self?.posts = data
         }
     }
     
@@ -44,12 +44,16 @@ extension TimelineViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return post.count
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionViewCell.reuseIdentifier, for: indexPath) as! PostCollectionViewCell
-        cell.post = post[indexPath.row]
+        cell.post = posts[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(posts[indexPath.row].title)
     }
 }
