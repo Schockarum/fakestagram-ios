@@ -18,9 +18,9 @@ class CameraViewController: UIViewController {
     
     //cuando se hace el tap en "Create" se intenta cargar una imagen hard codeada (está en assets) y, si logra crearse, se genera un payload que se envia a la API para generar un post con su título y la imagen en formato base 64
     @IBAction func onTapCreate(_ sender: Any) {
-        guard let img = UIImage(named: "MoustacheCat"),
+        guard let img = UIImage(named: "SinkoPeso"),
               let imgBase64 = img.encondeBase64() else { return }
-        let payload = CreatePostBase64(title: "Moustache Cat - \(Date().currentTimestamp())", imageData: imgBase64)
+        let payload = CreatePostBase64(title: "Sinko Peso - \(Date().currentTimestamp())", imageData: imgBase64)
         client.create(payload: payload) { post in
             print(post)
         }

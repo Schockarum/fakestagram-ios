@@ -62,4 +62,8 @@ class PostAuthorView: UIView {
         nameLbl.text = author.name
         avatarView.loadContent(from: author.avatarURL())
     }
+    
+    private func loadAvatar() {
+        
+    }
 }

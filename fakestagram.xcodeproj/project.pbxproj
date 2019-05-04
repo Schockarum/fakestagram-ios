@@ -10,6 +10,7 @@
 		7D1667702274A32000C70161 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D16676F2274A32000C70161 /* CameraViewController.swift */; };
 		7D1667722274A60C00C70161 /* UIImage + Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1667712274A60C00C70161 /* UIImage + Base64.swift */; };
 		7D1667742274BE0400C70161 /* CreatePostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1667732274BE0400C70161 /* CreatePostClient.swift */; };
+		7D241148227CEDEA0048CDAB /* NotificacionNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D241147227CEDEA0048CDAB /* NotificacionNames.swift */; };
 		7D3B952C2273919900B91FFB /* AccountClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B952B2273919900B91FFB /* AccountClient.swift */; };
 		7D3B9530227398A500B91FFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B952F227398A500B91FFB /* ProfileViewController.swift */; };
 		7D3B95322273C39900B91FFB /* ImageArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B95312273C39900B91FFB /* ImageArchive.swift */; };
@@ -62,6 +63,7 @@
 		7D16676F2274A32000C70161 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		7D1667712274A60C00C70161 /* UIImage + Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Base64.swift"; sourceTree = "<group>"; };
 		7D1667732274BE0400C70161 /* CreatePostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostClient.swift; sourceTree = "<group>"; };
+		7D241147227CEDEA0048CDAB /* NotificacionNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificacionNames.swift; sourceTree = "<group>"; };
 		7D3B952B2273919900B91FFB /* AccountClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountClient.swift; sourceTree = "<group>"; };
 		7D3B952F227398A500B91FFB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7D3B95312273C39900B91FFB /* ImageArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageArchive.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				7D1667712274A60C00C70161 /* UIImage + Base64.swift */,
 				E0BB9754223F5EDA00D028A1 /* Name.swift */,
 				E0BB9752223F5DFB00D028A1 /* Names.plist */,
+				7D241147227CEDEA0048CDAB /* NotificacionNames.swift */,
 			);
 			path = fakestagram;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				7D3B953A2273DF2200B91FFB /* LikeUpdaterClient.swift in Sources */,
 				E0BB9755223F5EDA00D028A1 /* Name.swift in Sources */,
 				E0DDF9F1223DF640009EB136 /* AppDelegate.swift in Sources */,
+				7D241148227CEDEA0048CDAB /* NotificacionNames.swift in Sources */,
 				7D3B952C2273919900B91FFB /* AccountClient.swift in Sources */,
 				7D3B95342273C7A100B91FFB /* DataContainer.swift in Sources */,
 				E0BB9748223F444B00D028A1 /* Client.swift in Sources */,

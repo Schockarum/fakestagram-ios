@@ -32,4 +32,22 @@ struct Post: Codable {
             }
         }
     }
+    
+    func likesCountText() -> String {
+        switch likesCount {
+        case 1:
+            return "\(likesCount) like"
+        default:
+            return "\(likesCount) likes"
+        }
+    }
+    
+    func commentsCountText() -> String {
+        switch commentsCount {
+        case 1:
+            return "\(commentsCount) comment"
+        default:
+            return "\(commentsCount) comments"
+        }
+    }
 }

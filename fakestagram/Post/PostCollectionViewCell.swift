@@ -9,10 +9,10 @@
 import UIKit
 
 class PostCollectionViewCell: UICollectionViewCell {
-    
     static let reuseIdentifier = "postViewCell"
+    public var row: Int = 1
     public var post: Post? {
-        didSet{ updateView() }
+        didSet { updateView() }
     }
     
     @IBOutlet weak var imageView: UIImageView!
@@ -27,28 +27,20 @@ class PostCollectionViewCell: UICollectionViewCell {
         updateView()
     }
     
-    func updateView(){
+    private func updateView() {
         guard let post = self.post else { return }
         post.load { [weak self] img in
             self?.imageView.image = img
         }
         authorView.author = post.author
         titleLbl.text = post.title
-        likesCountLbl.text = "\(post.likesCount) likes"
-        commentsCountLbl.text = "\(post.commentsCount) comments"
+        likesCountLbl.text = post.likesCountText()
+        commentsCountLbl.text = post.commentsCountText()
     }
     
-    
-    let client = LikeUpdaterClient()
     @IBAction func tapLike(_ sender: Any) {
-        guard var post = post else { return }
-        if post.swapLiked() {
-            post.likesCount = client.like(post: post)
-        } else {
-            post.likesCount = client.dislike(post: post)
-        }
+        guard let post = post else { return }
+        let client = LikeUpdaterClient(post: post, row: row)
+        self.post = client.call()
     }
-    
-    
-    
 }
