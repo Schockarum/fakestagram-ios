@@ -9,7 +9,6 @@
 import UIKit
 
 @IBDesignable
-
 class PostAuthorView: UIView {
     var author: Author? {
         didSet { updateView() }
@@ -60,10 +59,6 @@ class PostAuthorView: UIView {
     private func updateView() {
         guard let author = self.author else { return }
         nameLbl.text = author.name
-        avatarView.loadContent(from: author.avatarURL())
-    }
-    
-    private func loadAvatar() {
-        
+        avatarView.loadContent(from: author.avatarUrl())
     }
 }

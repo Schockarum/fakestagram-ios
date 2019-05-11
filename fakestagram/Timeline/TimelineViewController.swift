@@ -14,6 +14,8 @@ class TimelineViewController: UIViewController {
     var posts: [Post] = [] {
         didSet { postsCollectionView.reloadData() }
     }
+    var pageOffset: Int = 1
+    var loadingPage = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,7 @@ class TimelineViewController: UIViewController {
         
         client.show { [weak self] data in
             self?.posts = data
+            self?.postsCollectionView.reloadData()
         }
     }
     
@@ -48,6 +51,16 @@ class TimelineViewController: UIViewController {
             let json = try? JSONDecoder().decode(Post.self, from: data) else { return }
         posts[row] = json
     }
+    
+    func loadNextPage() {
+        loadingPage = true
+        pageOffset += 1
+        client.show(page: pageOffset) { [weak self] posts in
+            self?.posts.append(contentsOf: posts)
+            self?.loadingPage = false
+            self?.postsCollectionView.reloadData()
+        }
+    }
 }
 
 extension TimelineViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -68,5 +81,17 @@ extension TimelineViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionViewCell.reuseIdentifier, for: indexPath) as! PostCollectionViewCell
         cell.post = posts[indexPath.row]
         return cell
+    }
+}
+
+extension TimelineViewController: UICollectionViewDataSourcePrefetching{
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        if loadingPage {
+            guard let indexPath = indexPaths.last else { return }
+            let upperLimit = posts.count - 5
+            if indexPath.row > upperLimit{
+                loadNextPage()
+            }
+        }
     }
 }

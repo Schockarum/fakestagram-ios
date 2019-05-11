@@ -12,7 +12,7 @@ import WebKit
 class SVGView: UIView, WKNavigationDelegate {
     let webSVGView: WKWebView = {
         let wkv = WKWebView()
-        wkv.scrollView.isScrollEnabled = false
+        wkv.scrollView.isScrollEnabled = true
         wkv.translatesAutoresizingMaskIntoConstraints = false
         return wkv
     }()
@@ -45,6 +45,7 @@ class SVGView: UIView, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         //Hard coded offset value to center svg
-        webView.evaluateJavaScript("window.scrollto(400,0)", completionHandler: nil)
+        webView.evaluateJavaScript("window.scrollTo(385,0)", completionHandler: nil)
     }
+    
 }
