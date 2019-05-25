@@ -8,6 +8,6 @@
 
 import Foundation
 
-extension NSNotification.Name {
+extension Notification.Name {
     static let didLikePost = Notification.Name("didLikePost")
 }

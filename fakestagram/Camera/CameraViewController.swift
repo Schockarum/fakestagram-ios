@@ -7,24 +7,69 @@
 //
 
 import UIKit
+import AVFoundation
+import CoreLocation
 
 class CameraViewController: UIViewController {
+    let locationManager = CLLocationManager()
     let client = CreatePostClient()
+    var currentLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        enableBasicLocationServices()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        locationManager.startUpdatingLocation()
+    }
     
-    //cuando se hace el tap en "Create" se intenta cargar una imagen hard codeada (está en assets) y, si logra crearse, se genera un payload que se envia a la API para generar un post con su título y la imagen en formato base 64
-    @IBAction func onTapCreate(_ sender: Any) {
-        guard let img = UIImage(named: "gatoauto"),
-              let imgBase64 = img.encondeBase64() else { return }
-        let payload = CreatePostBase64(title: ">( ò n ó )< - \(Date().currentTimestamp())", imageData: imgBase64)
-        client.create(payload: payload) { post in
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManager.startUpdatingLocation()
+        super.viewWillDisappear(animated)
+    }
+    
+    @IBAction func onTapCapture(_ sender: Any) {
+        print("posting....")
+        let img = UIImage(named: "church")!
+        createPost(img: img)
+    }
+    
+    func enableBasicLocationServices() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            print("Disable location features")
+        case .authorizedWhenInUse, .authorizedAlways:
+            print("Enable location features")
+        }
+    }
+    
+    func createPost(img: UIImage) {
+        guard let imgBase64 = img.encodedBase64() else { return }
+        let timestamp = Date().currentTimestamp()
+        client.create(title: String(timestamp), imageData: imgBase64, location: currentLocation) { post in
             print(post)
         }
-        print(img.encondeBase64()!)
     }
     
+    /*
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+}
+
+extension CameraViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.currentLocation = locations.last
+    }
 }

@@ -12,5 +12,4 @@ struct Like: Codable {
     let author: Author?
     let createdAt: String
     let updatedAt: String
-    
 }

@@ -8,9 +8,8 @@
 
 import UIKit
 
-class PostThumbnailCollectionViewCell: UICollectionViewCell{
+class PostThumbnailCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "postThumbnailCell"
-    
     @IBOutlet weak var imageView: UIImageView!
     
     var post: Post? {

@@ -28,4 +28,3 @@ struct Account: Codable {
         return Author(id: id ?? "12345", name: name)
     }
 }
-

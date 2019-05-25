@@ -26,12 +26,12 @@ enum StorageType {
         return url
     }
     
-    func clearStorage() {
-        try? FileManager.default.removeItem(at: url)
-    }
-    
     var path: String {
         return url.path
+    }
+    
+    func clearStorage() {
+        try? FileManager.default.removeItem(at: url)
     }
     
     func ensureExists() {

@@ -10,6 +10,6 @@ import Foundation
 
 class AccountClient: RestClient<Account> {
     convenience init() {
-        self.init(client: Client(), path: "api/accounts")
+        self.init(client: Client(), path: "/api/accounts")
     }
 }
