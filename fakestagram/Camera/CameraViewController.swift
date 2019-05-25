@@ -16,6 +16,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     var currentLocation: CLLocation?
     
     @IBOutlet weak var pickedImage: UIImageView!
+    @IBOutlet weak var imageDescription: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,13 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     func createPost(img: UIImage) {
         guard let imgBase64 = img.encodedBase64() else { return }
         let timestamp = Date().currentTimestamp()
-        client.create(title: String(timestamp), imageData: imgBase64, location: currentLocation) { post in
+        var postTitle = ""
+        if imageDescription.text == nil{
+            postTitle = String(timestamp)
+        } else {
+            postTitle = String(timestamp) + " - " + imageDescription.text!
+        }
+        client.create(title: postTitle, imageData: imgBase64, location: currentLocation) { post in
             print(post)
         }
     }
