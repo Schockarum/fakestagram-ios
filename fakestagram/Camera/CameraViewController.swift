@@ -10,10 +10,12 @@ import UIKit
 import AVFoundation
 import CoreLocation
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let locationManager = CLLocationManager()
     let client = CreatePostClient()
     var currentLocation: CLLocation?
+    
+    @IBOutlet weak var pickedImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +32,37 @@ class CameraViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    @IBAction func onTapCapture(_ sender: Any) {
-        print("posting....")
-        let img = UIImage(named: "church")!
-        createPost(img: img)
+    
+    @IBAction func onTapCamera(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
+    
+    @IBAction func onTapGallery(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func onTapPost(_ sender: Any) {
+        //let img = UIImage(named: "PanzerCat")!
+        if let img = pickedImage.image{
+            print("posting....")
+            createPost(img: img)
+        } else {
+            print("Aún no se selecciona imagen.")
+        }
+    }
+    
     
     func enableBasicLocationServices() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -66,6 +94,12 @@ class CameraViewController: UIViewController {
      }
      */
     
+    //Función del delegate que se da cuenta cuando ya escogiste/tomaste una imagen/foto.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        pickedImage.image = image
+        dismiss(animated:true, completion: nil)
+    }
 }
 
 extension CameraViewController: CLLocationManagerDelegate {
